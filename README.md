@@ -1,0 +1,1 @@
+# asp.net.core.identity-sqlite-azure.ad.sso
