@@ -19,15 +19,15 @@ namespace Sample.Areas.Identity
                     options.UseSqlite(
                         context.Configuration.GetConnectionString("SampleIdentityDbContextConnection")));
 
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddEntityFrameworkStores<SampleIdentityDbContext>();
-                services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
-                    {
-                        microsoftOptions.ClientId = context.Configuration.GetValue<string>("Microsoft:ClientId");
-                        microsoftOptions.ClientSecret = context.Configuration.GetValue<string>("Microsoft:ClientSecret");
-                        microsoftOptions.TokenEndpoint = $"https://login.microsoftonline.com/{context.Configuration.GetValue<string>("Microsoft:TenantId")}/oauth2/v2.0/token";
-                        microsoftOptions.AuthorizationEndpoint = $"https://login.microsoftonline.com/{context.Configuration.GetValue<string>("Microsoft:TenantId")}/oauth2/v2.0/authorize";
-                    });
+                // services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
+                //     {
+                //         microsoftOptions.ClientId = context.Configuration.GetValue<string>("Microsoft:ClientId");
+                //         microsoftOptions.ClientSecret = context.Configuration.GetValue<string>("Microsoft:ClientSecret");
+                //         microsoftOptions.TokenEndpoint = $"https://login.microsoftonline.com/{context.Configuration.GetValue<string>("Microsoft:TenantId")}/oauth2/v2.0/token";
+                //         microsoftOptions.AuthorizationEndpoint = $"https://login.microsoftonline.com/{context.Configuration.GetValue<string>("Microsoft:TenantId")}/oauth2/v2.0/authorize";
+                //     });
             });
         }
     }
